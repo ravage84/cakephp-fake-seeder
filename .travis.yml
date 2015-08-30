@@ -10,7 +10,7 @@ php:
 
 env:
   global:
-    - PLUGIN_NAME=PluginSkeleton
+    - PLUGIN_NAME=FakeSeeder
     - REQUIRE=""
 
   matrix:
