@@ -33,7 +33,7 @@ before_script:
   - git clone -b master https://github.com/FriendsOfCake/travis.git --depth 1 ../travis
   - ../travis/before_script.sh
   - cd ../cakephp/app
-  - echo "require APP . '../vendor/autoload.php';spl_autoload_unregister(array('App', 'load'));spl_autoload_register(array('App', 'load'), true, true);';" >> Config/core.php
+  - echo "require APP . '../vendor/autoload.php';spl_autoload_unregister(array('App', 'load'));spl_autoload_register(array('App', 'load'), true, true);" >> Config/core.php
   - cat Config/core.php
   - cd ..
 
