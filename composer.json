@@ -1,0 +1,44 @@
+{
+	"name": "ravage84/cakephp-fake-seeder",
+	"description": "A shell to seed your database with fake and/or fixed data.",
+	"type": "cakephp-plugin",
+	"keywords":[
+		"cakephp",
+		"plugin",
+		"seeder",
+		"faker",
+		"data",
+		"fixtures"
+	],
+	"homepage": "https://github.com/ravage84/cakephp-fake-seeder",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Marc Würth",
+			"homepage": "https://github.com/ravage84/",
+			"mail": "ravage@bluewin.ch",
+			"role": "Lead developer"
+		},
+		{
+			"name": "Other contributors",
+			"homepage": "https://github.com/ravage84/cakephp-fake-seeder/graphs/contributors",
+			"role": "Contributors"
+		}
+	],
+	"support": {
+		"source": "https://github.com/ravage84/cakephp-fake-seeder",
+		"issues": "https://github.com/ravage84/cakephp-fake-seeder/issues",
+		"wiki":"https://github.com/ravage84/cakephp-fake-seeder/wiki"
+	},
+	"require": {
+		"php": ">=5.3.0",
+		"composer/installers": "*",
+		"fzaninotto/faker": "^1.5"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "3.7.*"
+	},
+	"extra": {
+		"installer-name": "FakeSeeder"
+	}
+}
