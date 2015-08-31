@@ -313,16 +313,15 @@ class SeederShell extends AppShell {
 				$seederName
 			));
 
-			// Execute the DynamicModelSeeder if the model exists
-			try {
-				// Make sure the table/model exists
-				ClassRegistry::init($seederName);
-
-				$seederTask = $this->Tasks->load('FakeSeeder.DynamicModelSeeder');
-			} catch(MissingTableException $e) {
+			// Make sure the table/model exists
+			$model = $this->_loadSeederModel($seederName);
+			if ($model === false) {
 				$this->out(__("No model '%s' found , aborting.", $seederName));
 				return;
 			}
+
+			// Execute the DynamicModelSeeder if the model exists
+			$seederTask = $this->Tasks->load('FakeSeeder.DynamicModelSeeder');
 		}
 		// Copy given arguments & parameters
 		$seederTask->args =& $this->args;
@@ -334,5 +333,15 @@ class SeederShell extends AppShell {
 		$seederTask->initialize();
 
 		$seederTask->execute();
+	}
+
+	/**
+	 * Load a model to seed
+	 *
+	 * @param string $seederName The model to load
+	 * @return
+	 */
+	protected function _loadSeederModel($seederName) {
+		return ClassRegistry::init($seederName);
 	}
 }

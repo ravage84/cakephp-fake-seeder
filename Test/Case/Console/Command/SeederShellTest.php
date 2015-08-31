@@ -448,7 +448,7 @@ class SeederShellTest extends CakeTestCase {
 	 */
 	public function testMainExecuteSeederTaskNoTable() {
 		$this->_createShellMock(
-			array('out'),
+			array('out', '_loadSeederModel'),
 			'SeederShellWithTasks'
 		);
 		$this->_shell->Tasks = $this->getMock(
@@ -463,8 +463,10 @@ class SeederShellTest extends CakeTestCase {
 			array('initialize', 'execute', 'fieldFormatters')
 		);
 
-		$this->_shell->Tasks->expects($this->at(0))->method('load')->with($this->equalTo('NonExistingModelSeeder'))
+		$this->_shell->Tasks->expects($this->once())->method('load')->with($this->equalTo('NonExistingModelSeeder'))
 			->will($this->throwException(new MissingTaskException('')));
+		$this->_shell->expects($this->once())->method('_loadSeederModel')->with($this->equalTo('NonExistingModel'))
+			->will($this->returnValue(false));
 
 		$seederTask->expects($this->never())->method('initialize');
 		$seederTask->expects($this->never())->method('execute');
