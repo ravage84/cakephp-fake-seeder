@@ -1,6 +1,7 @@
 <?php
 
 App::uses('ShellModelTruncator', 'FakeSeeder.Lib');
+App::uses('Folder', 'Utility');
 
 /**
  * SeederShell
