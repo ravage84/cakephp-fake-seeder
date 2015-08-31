@@ -17,7 +17,7 @@ Organizes logical groups of seeders in custom seeder shells/suites.
 ### Requirements
 
 - PHP >= 5.3
-- CakePHP 2.x
+- CakePHP 2.x (tested with 2.6.2, 2.7.3)
 
 ### Installation via composer
 
@@ -44,6 +44,9 @@ Set the configuration key ``FakeSeeder.seedable`` to true, by adding
 ``Configure::write('FakeSeeder.seedable', true);`` to your boostrap code.
 
 ## How to use
+
+After installing and configuring the plugin, you can invoke the shell
+by executing ``php Console/cake.php FakeSeeder.seeder -h``.
 
 ````
 Welcome to CakePHP v2.6.2 Console
@@ -99,6 +102,11 @@ without arguments, it will prompt to execute one of the seeder shell
 tasks available.
 
 ````
+
+- See [ExampleSeederShell.php](Docs/Examples/ExampleSeederShell.php) for an example how to create
+a **custom seeder shell**.
+- See [ExampleSeederTask.php](Docs/Examples/ExampleSeederTask.php) for an example how to create
+a **custom seeder task**.
 
 ## Contributing
 
