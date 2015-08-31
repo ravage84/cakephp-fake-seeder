@@ -12,6 +12,24 @@ Uses Faker to generate the fake data.
 Uses shell tasks for implementing specific seeders.
 Organizes logical groups of seeders in custom seeder shells/suites.
 
+# Why should I use it?
+
+You are wondering why you should use this plugin instead of using
+[Faker](https://github.com/fzaninotto/Faker) directly or
+creating fake data on your own?
+
+This plugin...
+
+- keeps you from doing the repetitive work (DRY)
+- provides you three working modes (manual faking to fully automatic guessing) 
+- helps you to stick to conventions, by following
+  CakePHP's "Convention over Configuration" principle
+- still provides you flexible configuration
+- reduces documentation needs
+- is properly covered by unit tests
+- is easy to learn
+- is extensible
+
 ## Installation
 
 ### Requirements
@@ -119,7 +137,6 @@ See [CHANGELOG.md](CHANGELOG.md)
 ## TODOs
 
 - Improve Documentation
-- Add configuration examples
 - Simplify integration of 3rd party data provider
 - Implement seeder shell task baking
 - Check possibility to use code for TestFixtures, like [gourmet/faker](https://github.com/gourmet/faker)
