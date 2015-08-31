@@ -1,4 +1,4 @@
-# FakeSeeder
+# CakePHP Fake Seeder
 
 [![Travis-CI Build Status](https://travis-ci.org/ravage84/cakephp-fake-seeder.png)](https://travis-ci.org/ravage84/cakephp-fake-seeder)
 [![Coverage Status](https://img.shields.io/coveralls/ravage84/cakephp-fake-seeder.svg)](https://coveralls.io/r/ravage84/cakephp-fake-seeder?branch=master)
@@ -12,7 +12,7 @@ Uses Faker to generate the fake data.
 Uses shell tasks for implementing specific seeders.
 Organizes logical groups of seeders in custom seeder shells/suites.
 
-# Why should I use it?
+## Why should I use it?
 
 You are wondering why you should use this plugin instead of using
 [Faker](https://github.com/fzaninotto/Faker) directly or
