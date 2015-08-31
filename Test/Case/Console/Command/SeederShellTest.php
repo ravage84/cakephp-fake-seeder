@@ -250,6 +250,10 @@ class SeederShellTest extends CakeTestCase {
 	 * @covers ::_executeSeederTask
 	 */
 	public function testMainExecuteByNameSeederPrompt() {
+		$this->_createShellMock(
+			array('out', 'in', '_getSeederTasks', '_executeSeederTask')
+		);
+
 		$tasks = array('Apple', 'Banana');
 		$this->_shell->params['no-truncate'] = 'foo';
 		$this->_shell->expects($this->at(0))->method('_getSeederTasks')->will($this->returnValue($tasks));
@@ -257,11 +261,8 @@ class SeederShellTest extends CakeTestCase {
 		$this->_shell->expects($this->at(5))->method('out')->with(
 			$this->equalTo('Execute Apple seeder...')
 		);
-		$this->_shell->expects($this->at(6))->method('out')->with(
-			$this->equalTo("No seeder shell tasks named 'AppleSeeder' found. Trying to find a 'Apple' model.")
-		);
-		$this->_shell->expects($this->at(7))->method('out')->with(
-			$this->equalTo("No model 'Apple' found , aborting.")
+		$this->_shell->expects($this->at(6))->method('_executeSeederTask')->with(
+			$this->equalTo('Apple'), $this->equalTo('foo')
 		);
 
 		$this->_shell->main();
@@ -278,6 +279,10 @@ class SeederShellTest extends CakeTestCase {
 	 * @covers ::_executeSeederTask
 	 */
 	public function testMainExecuteByNumberSeederPrompt() {
+		$this->_createShellMock(
+			array('out', 'in', '_getSeederTasks', '_executeSeederTask')
+		);
+
 		$tasks = array('Apple', 'Banana');
 		$this->_shell->params['no-truncate'] = 'foo';
 		$this->_shell->expects($this->at(0))->method('_getSeederTasks')->will($this->returnValue($tasks));
@@ -285,11 +290,8 @@ class SeederShellTest extends CakeTestCase {
 		$this->_shell->expects($this->at(5))->method('out')->with(
 			$this->equalTo('Execute Apple seeder...')
 		);
-		$this->_shell->expects($this->at(6))->method('out')->with(
-			$this->equalTo("No seeder shell tasks named 'AppleSeeder' found. Trying to find a 'Apple' model.")
-		);
-		$this->_shell->expects($this->at(7))->method('out')->with(
-			$this->equalTo("No model 'Apple' found , aborting.")
+		$this->_shell->expects($this->at(6))->method('_executeSeederTask')->with(
+			$this->equalTo('Apple'), $this->equalTo('foo')
 		);
 
 		$this->_shell->main();
@@ -435,6 +437,42 @@ class SeederShellTest extends CakeTestCase {
 
 		$this->assertAttributeEquals($this->_shell->args, 'args', $seederTask);
 		$this->assertAttributeEquals($this->_shell->params, 'params', $seederTask);
+	}
+
+	/**
+	 * Test the _executeSeederTask method when trying to execute a non existing seeder for which no model/table exists
+	 *
+	 * @return void
+	 * @covers ::main
+	 * @covers ::_executeSeederTask
+	 */
+	public function testMainExecuteSeederTaskNoTable() {
+		$this->_createShellMock(
+			array('out'),
+			'SeederShellWithTasks'
+		);
+		$this->_shell->Tasks = $this->getMock(
+			'TaskCollection',
+			array('load'),
+			array(),
+			'',
+			false
+		);
+		$seederTask = $this->getMock(
+			'SeederTaskBase',
+			array('initialize', 'execute', 'fieldFormatters')
+		);
+
+		$this->_shell->Tasks->expects($this->at(0))->method('load')->with($this->equalTo('NonExistingModelSeeder'))
+			->will($this->throwException(new MissingTaskException('')));
+
+		$seederTask->expects($this->never())->method('initialize');
+		$seederTask->expects($this->never())->method('execute');
+
+		$this->_shell->args[0] = 'NonExistingModel';
+		$this->_shell->params['no-truncate'] = 'foo';
+
+		$this->_shell->main();
 	}
 
 	/**
