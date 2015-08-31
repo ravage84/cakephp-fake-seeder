@@ -127,3 +127,13 @@ See [CHANGELOG.md](CHANGELOG.md)
 ## License
 
 This plugin is licensed under the [MIT License](LICENSE).
+
+## Attribution
+
+This project was inspired by the works of others, such as:
+
+- The book ["Build APIs You Won't Hate"](https://leanpub.com/build-apis-you-wont-hate) by [Phil Sturgeon](https://github.com/philsturgeon)
+- The [Faker plugin for CakePHP 3.x](https://github.com/gourmet/faker) by [Jad Bitar](https://github.com/jadb)
+- [Faker](https://github.com/fzaninotto/Faker) by [Francois Zaninotto](https://github.com/fzaninotto)
+- [CakePHP Faker Fixtures Plugin](https://github.com/burriko/cakephp-faker-fixtures/)
+- [CakePHP Seed Shell Plugin](https://github.com/jlis/Cake-Seed-Shell)
