@@ -5,6 +5,6 @@ tools:
     php_analyzer: true
     php_changetracking: true
     sensiolabs_security_checker: true
-    php_code_sniffer:
-        config:
-            ruleset: CakePHP
+    #php_code_sniffer:
+        #config:
+            #ruleset: CakePHP
