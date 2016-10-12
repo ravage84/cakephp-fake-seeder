@@ -7,6 +7,11 @@
 /nbproject
 .idea
 
+# Eclipse / PHP Development Tools / Aptana Studio
+.project
+.buildpath
+.settings
+
 # PHP Tools #
 #############
 /*.phar
