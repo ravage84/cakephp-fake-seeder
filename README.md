@@ -34,7 +34,7 @@ This plugin...
 
 ### Requirements
 
-- PHP >= 5.3
+- PHP >= 5.4
 - CakePHP 2.x (tested with 2.6.2, 2.7.3)
 
 ### Installation via composer
