@@ -33,7 +33,7 @@ class ShellModelTruncator {
 			$this->_shell->out(__('Truncate model %s...', $modelName), 1, Shell::VERBOSE);
 			$model = ClassRegistry::init($modelName);
 			$datasource = $model->getDataSource();
-			$datasource->truncate($model->table);
+			$datasource->truncate($model->tablePrefix . $model->useTable);
 		}
 	}
 }
